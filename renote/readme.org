@@ -1,0 +1,5 @@
+* Python Implementation of denote
+
+This is a python/command line implementation of the wonder denote.el package by Prot.
+
+* Very much WIP at the moment. 
