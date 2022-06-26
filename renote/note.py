@@ -55,7 +55,7 @@ class Note:
                    f'{"#+date:".ljust(14)} {self.time}\n'
                    f'{"#+filetags:".ljust(14)} {self.tags["sorted"]}\n'
                    f'{"#+identifier:".ljust(14)} {self.idTime}\n'
-                   )
+                   , file=file)
 
            case "mdToml":
                print(
@@ -65,7 +65,7 @@ class Note:
                    f'{"tags".ljust(11)} = {self.tags["sorted"]}\n'
                    f'{"identifier".ljust(11)} = "{self.idTime}"\n'
                    '+++\n'
-                   )
+                   , file=file)
            case "txt":
                print(
                    f'{"title:".ljust(11)} {self.title["input"]}\n'
@@ -73,7 +73,7 @@ class Note:
                    f'{"tags:".ljust(11)} {self.tags["sorted"]}\n'
                    f'{"identifier:".ljust(11)} {self.idTime}\n'
                    '---------------------------\n'
-                   )
+                   , file=file)
                
 
 
