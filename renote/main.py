@@ -1,12 +1,13 @@
-from datetime import datetime
+import click
 from pathlib import Path
+# import subprocess
 import os
+from note import Note
 
+notesDirectory: Path = Path('/home/adam/notes')
+defaultNoteFormat = "md"
 
-notesDirectory = Path('/home/adam/notes')
-
-
-def getOrCreateDir(dirPath):
+def getOrCreateDir(dirPath: Path):
     if dirPath.exists():
         return dirPath
     else:
@@ -16,35 +17,18 @@ def getOrCreateDir(dirPath):
 # 20220610T062201--define-custom-org-hyperlink-type__denote_emacs_package.md
 
 
+
+@click.command()
 def setNote():
-    dateNow = datetime.now()
-    dateID = dateNow.strftime("%Y%m%dT%H%M%S")
-    date = dateNow.strftime("%Y %m %d")
-    title = getTitle()
-    tags = getTags()
-    noteID = dateID + title[0] + tags[0] + ".md"
+    note = Note()  
     notesDir = getOrCreateDir(notesDirectory)
-    path = notesDir / noteID
+    path = notesDir / note.fileId
     with open(path, 'w') as file:
-        file.writelines(
-            mdFrontMatter(title[1], date, tags[1], dateID)
-        )
-    os.system(f"emacs {path}")
-
-
-def getTitle():
-    inputTitle = input("Title: ")
-    title = inputTitle.replace(" ", "-")
-    title = "--" + title
-    return [title, inputTitle]
-
-
-def getTags():
-    inputTags = input("Tags: ")
-    sortedTags = ' '.join(sorted(inputTags.split()))
-    tags = inputTags.replace(" ", "_")
-    tags = "__" + tags.lower()
-    return [tags, sortedTags]
+        note.printFrontMatter("mdYaml", file)
+    os.system(f"xdg-open {path}")
+    # subprocess.call(["nano", path])
+    # sys.exit(f"File {note.fileId} created")
+    
 
 # ---
 # title:      "This is a sample note"
@@ -54,17 +38,7 @@ def getTags():
 # ---
 
 
-def mdFrontMatter(title, date, tags, id):
-    return f'''---
-{"title:".ljust(11)} "{title}"
-{"date:".ljust(11)} {date}
-{"tags:".ljust(11)} {tags}
-{"identifier:".ljust(11)} "{id}"
----'''
 
-
-def AddFrontMatter(type):
-    pass
 
 
 if __name__ == "__main__":
