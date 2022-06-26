@@ -27,6 +27,14 @@ class Note:
         self.title =  {"formated" : title, "input" : inputTitle}
     
 
+    def getTags(self):
+        inputTags = input("Tags: ")
+        sortedTags = ' '.join(sorted(inputTags.split()))
+        tags = inputTags.replace(" ", "_")
+        tags = "__" + tags.lower()
+        self.tags = {"tags" : tags, "sorted" : sortedTags}
+
+
     def getID(self):
         self.fileId = self.idTime + self.title["formated"] + self.tags["tags"] + ".md"
         
@@ -69,11 +77,5 @@ class Note:
                
 
 
-    def getTags(self):
-        inputTags = input("Tags: ")
-        sortedTags = ' '.join(sorted(inputTags.split()))
-        tags = inputTags.replace(" ", "_")
-        tags = "__" + tags.lower()
-        self.tags = {"tags" : tags, "sorted" : sortedTags}
 
 
