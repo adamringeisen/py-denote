@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-07-07 Thu 15:49 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Adam Ringeisen" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgff9e7c1">1. Python Implementation of denote</a></li>
+<li><a href="#orgc384811">2. What renote does</a></li>
+<li><a href="#orgc47b0aa">3. Front Matter</a></li>
+<li><a href="#orgaf6b910">4. Roadmap</a>
+<ul>
+<li><a href="#org0414df6">4.1. <span class="todo TODO">TODO</span> Config file to set options</a>
+<ul>
+<li><a href="#orge358d17">4.1.1. <span class="todo TODO">TODO</span> Option for default file/front matter format</a></li>
+<li><a href="#org6490014">4.1.2. <span class="todo TODO">TODO</span> Option for changing directory for notes</a></li>
+<li><a href="#org2b1c5bf">4.1.3. <span class="todo TODO">TODO</span> Option for toggling order of tags</a></li>
+</ul>
+</li>
+<li><a href="#orga6b6fc5">4.2. <span class="todo TODO">TODO</span> built in tag/title/date search</a></li>
+<li><a href="#orgf2668b8">4.3. <span class="todo TODO">TODO</span> Windows/Mac? (does macos use xdg-open?) support</a></li>
+<li><a href="#org0116104">4.4. <span class="todo TODO">TODO</span> Tests</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgff9e7c1" class="outline-2">
+<h2 id="orgff9e7c1"><span class="section-number-2">1.</span> Python Implementation of denote</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+A python/command line implementation of some very basic features of the wonderful <a href="https://protesilaos.com/emacs/denote">denote.el</a> package by Prot.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc384811" class="outline-2">
+<h2 id="orgc384811"><span class="section-number-2">2.</span> What renote does</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+This is a command line program for creating notes with a useful naming scheme. If called with no arguments, it will prompt you for a title and the tags for the note (these can also be specified with &#x2013;title and &#x2013;tags) and then opens the note<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup> with front matter populated. Notes are created in ~/notes<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup> (the directory is created if it doesn't exist) with a file name in the format of:
+</p>
+
+<pre class="example" id="orge1dda1f">
+YYYYMMDDTHHMMSS--Title__tag_tag_tag.ext
+</pre>
+
+<p>
+An actual file name would look like:
+</p>
+<pre class="example" id="orgda92af6">
+20220625T084746--Python-list-comprehensions__python_ref_list.md
+</pre>
+<p>
+In this example, the title is 'Python list comprehensions', the tags are 'python', 'ref' and 'list. It was created on June 25th, 2022 at 8:47:46 AM.
+</p>
+
+<p>
+The date and time serves as a uuid so there will never be a conflict if you have notes with the exact same title and tags, they will always be seperate notes.
+</p>
+
+<p>
+The title is seperated by the <b>-</b> character. This useful for searching through notes with something like grep or more usefully a narrowing search like periscope for neovim as any search that starts with <b>--</b> will search the first word in title of your notes and any search that starts with <b>-</b> will search any word in the title of your . Tags are similarly seperated by the <b>_</b> character so any search that starts with <b>__</b> will search the first tag and <b>_</b> will search for any tag.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc47b0aa" class="outline-2">
+<h2 id="orgc47b0aa"><span class="section-number-2">3.</span> Front Matter</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Front matter is the text at the begining of the file. The default is to use markdown files with Yaml<sup><a id="fnr.2.100" class="footref" href="#fn.2" role="doc-backlink">2</a></sup> formatted front matter. Renote supports all files and front matter formats that denote.el supports. They are described in detail in the denote documentation <a href="https://protesilaos.com/emacs/denote#h:13218826-56a5-482a-9b91-5b6de4f14261">here</a>.
+</p>
+
+<p>
+The default format looks like:
+</p>
+<pre class="example" id="org4e9dbf9">
+---
+title:      "This is a sample note"
+date:       2022-06-30T16:09:58+03:00
+tags:       denote  testing
+identifier: "20220630T160958"
+---
+</pre>
+
+<p>
+As with denote.el, the tags are ordered alphabetically in the front matter<sup><a id="fnr.2.100" class="footref" href="#fn.2" role="doc-backlink">2</a></sup> but order is preserved in the file name.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgaf6b910" class="outline-2">
+<h2 id="orgaf6b910"><span class="section-number-2">4.</span> Roadmap</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org0414df6" class="outline-3">
+<h3 id="org0414df6"><span class="section-number-3">4.1.</span> <span class="todo TODO">TODO</span> Config file to set options</h3>
+<div class="outline-text-3" id="text-4-1">
+</div>
+<div id="outline-container-orge358d17" class="outline-4">
+<h4 id="orge358d17"><span class="section-number-4">4.1.1.</span> <span class="todo TODO">TODO</span> Option for default file/front matter format</h4>
+</div>
+<div id="outline-container-org6490014" class="outline-4">
+<h4 id="org6490014"><span class="section-number-4">4.1.2.</span> <span class="todo TODO">TODO</span> Option for changing directory for notes</h4>
+</div>
+<div id="outline-container-org2b1c5bf" class="outline-4">
+<h4 id="org2b1c5bf"><span class="section-number-4">4.1.3.</span> <span class="todo TODO">TODO</span> Option for toggling order of tags</h4>
+</div>
+</div>
+<div id="outline-container-orga6b6fc5" class="outline-3">
+<h3 id="orga6b6fc5"><span class="section-number-3">4.2.</span> <span class="todo TODO">TODO</span> built in tag/title/date search</h3>
+</div>
+<div id="outline-container-orgf2668b8" class="outline-3">
+<h3 id="orgf2668b8"><span class="section-number-3">4.3.</span> <span class="todo TODO">TODO</span> Windows/Mac? (does macos use xdg-open?) support</h3>
+</div>
+<div id="outline-container-org0116104" class="outline-3">
+<h3 id="org0116104"><span class="section-number-3">4.4.</span> <span class="todo TODO">TODO</span> Tests</h3>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Currently uses xdg-open, so it only works on linux and it just acts like you clicked on the file to open it, using whatever you have set to open files of that type. 
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Not currently configurable. On roadmap for a future release. 
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Adam Ringeisen</p>
+<p class="date">Created: 2022-07-07 Thu 15:49</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

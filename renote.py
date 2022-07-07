@@ -15,28 +15,11 @@ def getOrCreateDir(dirPath: Path):
     return dirPath
 
 
-# import click
-
-# @click.command()
-# @click.option('--count', default=1, help='Number of greetings.')
-# @click.option('--name', prompt='Your name',
-#               help='The person to greet.')
-# def hello(count, name):
-#     """Simple program that greets NAME for a total of COUNT times."""
-#     for x in range(count):
-#         click.echo(f"Hello {name}!")
-
-# if __name__ == '__main__':
-#     hello()
-
-
-
 @click.command()
 @click.option('--format', default="mdYaml", help="Format of resulting note file")
 @click.option('--title', prompt="Title", help="Title of note")
 @click.option('--tags', prompt="Tags", help='Tags for note')
-def setNote(format, title, tags):
-    
+def setNote(format, title, tags):  
     note = Note(format, title, tags)  
     notesDir = getOrCreateDir(notesDirectory)
     path = notesDir / note.fileId
@@ -46,7 +29,5 @@ def setNote(format, title, tags):
     # subprocess.call(["nano", path])
     # sys.exit(f"File {note.fileId} created")
    
-
-
 if __name__ == "__main__":
     setNote()

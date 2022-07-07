@@ -1,2 +1,5 @@
-renote/venv/*
-renote/__pycache__/*
+venv/*
+__pycache__/*
+renote.egg-info/*
+#*
+*.save
