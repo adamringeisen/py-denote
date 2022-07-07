@@ -4,7 +4,7 @@ from pathlib import Path
 import os
 from note import Note
 
-notesDirectory: Path = Path('/home/adam/notes')
+notesDirectory: Path = Path.home()
 defaultNoteFormat = "md"
 
 def getOrCreateDir(dirPath: Path):
