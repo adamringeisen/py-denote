@@ -59,11 +59,17 @@ As with denote.el, the tags are ordered alphabetically in the front matter[fn:1]
 
 * Roadmap
 [ ] Config file to set options
+
 [ ] Option for default file/front matter format
+
 [ ] Option for changing directory for notes
+
 [ ] Option for toggling order of tags
+
 [ ] Built in tag/title/date search
+
 [ ] Windows/Mac? (does macos use xdg-open?) support
+
 [ ] Duplicate denote functionality to rename arbitrary files (such as pdf, epub, etc) in the same file name format.
 
  
