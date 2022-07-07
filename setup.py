@@ -10,7 +10,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'renote = renote.scripts.renote:setNote',
+            'renote = renote:setNote',
             ],
         },
 )
