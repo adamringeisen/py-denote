@@ -1,5 +1,72 @@
-* Python Implementation of denote
+* Renote 0.1.0
 
-This is a python/command line implementation of the wonder denote.el package by Prot.
+A python/command line implementation of some very basic features of the wonderful [[https://protesilaos.com/emacs/denote][denote.el]] package by Prot.
 
-* Very much WIP at the moment. 
+* What renote does
+
+This is a command line program for creating notes with a useful naming scheme. If called with no arguments, it will prompt you for a title and the tags for the note (these can also be specified with --title and --tags) and then opens the note[fn:2] with front matter populated. Notes are created in ~/notes[fn:1] (the directory is created if it doesn't exist) with a file name in the format of:
+
+#+begin_example
+YYYYMMDDTHHMMSS--Title__tag_tag_tag.ext
+#+end_example
+
+An actual file name would look like:
+#+begin_example
+20220625T084746--Python-list-comprehensions__python_ref_list.md
+#+end_example
+In this example, the title is 'Python list comprehensions', the tags are 'python', 'ref' and 'list. It was created on June 25th, 2022 at 8:47:46 AM.
+
+The date and time serves as a uuid so there will never be a conflict if you have notes with the exact same title and tags, they will always be seperate notes.
+
+The title is seperated by the *-* character. This useful for searching through notes with something like grep or more usefully a narrowing search like periscope for neovim as any search that starts with *--* will search the first word in title of your notes and any search that starts with *-* will search any word in the title of your . Tags are similarly seperated by the *_* character so any search that starts with *__* will search the first tag and *_* will search for any tag.
+
+* Using Renote
+** Installing
+
+#+begin_example
+git clone https://github.com/adamringeisen/renote.git
+cd renote
+pip install .
+#+end_example
+
+** Usage
+Calling renote with no arguments will prompt you for a title and tags.
+#+begin_example
+renote
+#+end_example
+
+Title and/or tags can be provided:
+#+begin_example
+renote --title "This is an example title" --tags "renote python reference"
+#+end_example
+
+This will create the file, populate the front matter and open the file in your default editor[fn:2]. 
+* Front Matter
+
+Front matter is the text at the begining of the file. The default is to use markdown files with Yaml[fn:1] formatted front matter. Renote supports all files and front matter formats that denote.el supports. They are described in detail in the denote documentation [[https://protesilaos.com/emacs/denote#h:13218826-56a5-482a-9b91-5b6de4f14261][here]].
+
+The default format looks like:
+#+begin_example
+---
+title:      "This is a sample note"
+date:       2022-06-30T16:09:58+03:00
+tags:       denote  testing
+identifier: "20220630T160958"
+---
+#+end_example
+
+As with denote.el, the tags are ordered alphabetically in the front matter[fn:1] but order is preserved in the file name.
+
+* Roadmap
+** TODO Config file to set options
+*** TODO Option for default file/front matter format
+*** TODO Option for changing directory for notes
+*** TODO Option for toggling order of tags
+** TODO built in tag/title/date search
+** TODO Windows/Mac? (does macos use xdg-open?) support
+** TODO Duplicate denote functionality to rename arbitrary files (such as pdf, epub, etc) in the same file name format.
+
+ 
+[fn:2] Currently uses xdg-open, so it only works on linux and it just acts like you clicked on the file to open it, using whatever you have set to open files of that type. 
+
+[fn:1] Not currently configurable. On roadmap for a future release. 
