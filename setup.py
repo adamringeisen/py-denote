@@ -1,16 +1,15 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name='renote',
     version='0.1.0',
-    packages=find_packages(),
-    include_package_data=True,
+    py_modules=['renote','note'],
     install_requires=[
         'Click',
     ],
     entry_points={
         'console_scripts': [
-            'renote = renote.renote:setNote',
+            'renote = renote:setNote',
             ],
         },
 )
