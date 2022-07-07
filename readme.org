@@ -58,13 +58,13 @@ identifier: "20220630T160958"
 As with denote.el, the tags are ordered alphabetically in the front matter[fn:1] but order is preserved in the file name.
 
 * Roadmap
-[ ] TODO Config file to set options
-[ ] TODO Option for default file/front matter format
-[ ] TODO Option for changing directory for notes
-[ ] TODO Option for toggling order of tags
-[ ] TODO built in tag/title/date search
-[ ] TODO Windows/Mac? (does macos use xdg-open?) support
-[ ] TODO Duplicate denote functionality to rename arbitrary files (such as pdf, epub, etc) in the same file name format.
+[ ] Config file to set options
+[ ] Option for default file/front matter format
+[ ] Option for changing directory for notes
+[ ] Option for toggling order of tags
+[ ] Built in tag/title/date search
+[ ] Windows/Mac? (does macos use xdg-open?) support
+[ ] Duplicate denote functionality to rename arbitrary files (such as pdf, epub, etc) in the same file name format.
 
  
 [fn:2] Currently uses xdg-open, so it only works on linux and it just acts like you clicked on the file to open it, using whatever you have set to open files of that type. 
