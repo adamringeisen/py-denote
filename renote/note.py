@@ -8,11 +8,13 @@ class Note:
     title: dict
     tags: dict
     fileId: str
+    format: str
     
-    def __init__(self) -> None:
+    def __init__(self, format, title, tags) -> None:
+        self.format = format
         self.setTime()
-        self.getTitle()
-        self.getTags()
+        self.getTitle(title)
+        self.getTags(tags)
         self.getID()
         
     def setTime(self):
@@ -20,18 +22,15 @@ class Note:
         self.idTime = time.strftime("%Y%m%dT%H%M%S")
         self.time = time.strftime("%Y-%m-%d")
     
-    def getTitle(self):
-        inputTitle = input("Title: ")
-        title = inputTitle.replace(" ", "-")
-        title = "--" + title
+    def getTitle(self, title):
+        inputTitle = title
+        title = "--" + title.replace(" ", "-")
         self.title =  {"formated" : title, "input" : inputTitle}
     
 
-    def getTags(self):
-        inputTags = input("Tags: ")
-        sortedTags = ' '.join(sorted(inputTags.split()))
-        tags = inputTags.replace(" ", "_")
-        tags = "__" + tags.lower()
+    def getTags(self, tags):
+        sortedTags = ' '.join(sorted(tags.split()))
+        tags = "__" + tags.replace(" ", "_")
         self.tags = {"tags" : tags, "sorted" : sortedTags}
 
 
