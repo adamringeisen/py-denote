@@ -14,31 +14,38 @@ def getOrCreateDir(dirPath: Path):
         dirPath.mkdir()
     return dirPath
 
-# 20220610T062201--define-custom-org-hyperlink-type__denote_emacs_package.md
+
+# import click
+
+# @click.command()
+# @click.option('--count', default=1, help='Number of greetings.')
+# @click.option('--name', prompt='Your name',
+#               help='The person to greet.')
+# def hello(count, name):
+#     """Simple program that greets NAME for a total of COUNT times."""
+#     for x in range(count):
+#         click.echo(f"Hello {name}!")
+
+# if __name__ == '__main__':
+#     hello()
 
 
 
 @click.command()
-def setNote():
-    note = Note()  
+@click.option('--format', default="mdYaml", help="Format of resulting note file")
+@click.option('--title', prompt="Title", help="Title of note")
+@click.option('--tags', prompt="Tags", help='Tags for note')
+def setNote(format, title, tags):
+    
+    note = Note(format, title, tags)  
     notesDir = getOrCreateDir(notesDirectory)
     path = notesDir / note.fileId
     with open(path, 'w') as file:
-        note.printFrontMatter("mdYaml", file)
+        note.printFrontMatter(note.format, file)
     os.system(f"xdg-open {path}")
     # subprocess.call(["nano", path])
     # sys.exit(f"File {note.fileId} created")
-    
-
-# ---
-# title:      "This is a sample note"
-# date:       2022-06-10
-# tags:       denote  testing
-# identifier: "20220610T202021"
-# ---
-
-
-
+   
 
 
 if __name__ == "__main__":
