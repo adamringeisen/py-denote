@@ -12,32 +12,32 @@ class Note:
     
     def __init__(self, format, title, tags) -> None:
         self.format = format
-        self.setTime()
-        self.getTitle(title)
-        self.getTags(tags)
-        self.getID()
+        self.set_time()
+        self.get_title(title)
+        self.get_tags(tags)
+        self.get_id()
         
-    def setTime(self):
+    def set_time(self):
         time = datetime.now()
         self.idTime = time.strftime("%Y%m%dT%H%M%S")
         self.time = time.strftime("%Y-%m-%d")
     
-    def getTitle(self, title):
+    def get_title(self, title):
         inputTitle = title
         title = "--" + title.replace(" ", "-")
         self.title =  {"formated" : title, "input" : inputTitle}
     
 
-    def getTags(self, tags):
+    def get_tags(self, tags):
         sortedTags = ' '.join(sorted(tags.split()))
         tags = "__" + tags.replace(" ", "_")
         self.tags = {"tags" : tags, "sorted" : sortedTags}
 
 
-    def getID(self):
+    def get_id(self):
         self.fileId = self.idTime + self.title["formated"] + self.tags["tags"] + ".md"
         
-    def printFrontMatter(self, format, file):
+    def print_front_matter(self, format, file):
         match format:
            case "mdYaml":
               print(
