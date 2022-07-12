@@ -26,10 +26,7 @@ def main(format, title, tags):
     """Create note from arguments."""
     note = Note(format, title, tags)
     notes_dir = get_or_create_dir(notes_directory)
-    path = notes_dir / note.fileId
-    with open(path, "w") as file:
-        note.print_front_matter(note.format, file)
-    os.system(f"xdg-open {path}")
+    note.create_and_open_note(notes_dir)
 
 
 if __name__ == "__main__":
