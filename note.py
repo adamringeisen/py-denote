@@ -84,6 +84,9 @@ class Note:
         mdToml : Mardown with Toml flavored front matter.
         org : Emacs org-mode front matter. Timestamp in [inactive] form.
         txt : Plain text front matter.
+
+        File is the file created by get_id().
+
         """
         match format:
             case "mdYaml":
