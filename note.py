@@ -13,19 +13,16 @@ class Note:
     fileId: str
     format_type: str
     formats: dict = {
-        "mdYaml": {"ext": "md", "desc": "Markdown with Yaml Flavored Front Matter"},
-        "mdToml": {"ext": "md", "desc": "Markdown with Toml Flavored Front Matter"},
-        "org": {
-            "ext": "org",
-            "desc": "Emacs org-mode front matter. Timestamp in [inactive] form.",
-        },
-        "txt": {"ext": "txt", "desc": "Plain text front matter."},
+        "mdYaml": {"ext": "md"},
+        "mdToml": {"ext": "md"},
+        "org": {"ext": "org"},
+        "txt": {"ext": "txt"},
     }
 
     def __init__(self, format_type, title, tags) -> None:
         """Initialize Note."""
         self.format_type = format_type
-        self.set_time()
+        self.set_time(datetime.now())
         self.get_title(title)
         self.get_tags(tags)
         self.get_id()
@@ -37,9 +34,8 @@ class Note:
             self.print_front_matter(self.format_type, new_note_file)
         os.system(f"xdg-open {path}")
 
-    def set_time(self):
+    def set_time(self, time):
         """Set time as current time of instantiation."""
-        time = datetime.now()
         self.idTime = time.strftime("%Y%m%dT%H%M%S")
         self.time = time.strftime("%Y-%m-%d")
 
