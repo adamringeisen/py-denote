@@ -1,10 +1,11 @@
-"""Datetime for dates."""
+"""Note Class."""
 from datetime import datetime
-import os
+import pathlib
+import click
 
 
 class Note:
-    """Single Note."""
+    """A Note."""
 
     time: str
     idTime: str
@@ -23,32 +24,31 @@ class Note:
         """Initialize Note."""
         self.format_type = format_type
         self.set_time(datetime.now())
-        self.get_title(title)
-        self.get_tags(tags)
-        self.get_id()
+        self.set_title(title)
+        self.set_tags(tags)
+        self.set_id()
 
     def create_and_open_note(self, note_dir):
         """Create and open new note."""
-        path = note_dir / self.fileId
+        path: pathlib.PosixPath = note_dir / self.fileId
         with open(path, "w") as new_note_file:
             self.print_front_matter(self.format_type, new_note_file)
-        os.system(f"xdg-open {path}")
+        click.launch(path.as_uri())
 
     def set_time(self, time):
         """Set time as current time of instantiation."""
         self.idTime = time.strftime("%Y%m%dT%H%M%S")
         self.time = time.strftime("%Y-%m-%d")
 
-    def get_title(self, title):
+    def set_title(self, title):
         """Set title of Note.
 
         Return dict of original and formatted title.
         """
-        inputTitle = title
-        title = "--" + title.replace(" ", "-")
-        self.title = {"formated": title, "input": inputTitle}
+        formatted_title = "--" + title.replace(" ", "-")
+        self.title = {"formatted": formatted_title, "input": title}
 
-    def get_tags(self, tags):
+    def set_tags(self, tags):
         """Set tag of Note.
 
         Return dict of tags formated for filename
@@ -58,15 +58,14 @@ class Note:
         tags = "__" + tags.replace(" ", "_")
         self.tags = {"tags": tags, "sorted": sortedTags}
 
-    def get_id(self):
+    def set_id(self):
         """Construct filename for Note.
 
         Format is YYYYDDMMTHHMMSS--Title__tag_tag.ext
-        TODO: Extension currently ugly.
         """
         self.fileId = (
             self.idTime
-            + self.title["formated"]
+            + self.title["formatted"]
             + self.tags["tags"]
             + "."
             + self.formats[self.format_type]["ext"]
@@ -81,7 +80,7 @@ class Note:
         org : Emacs org-mode front matter. Timestamp in [inactive] form.
         txt : Plain text front matter.
 
-        File is the file created by get_id().
+        File is the file created by set_id().
 
         """
         match format:

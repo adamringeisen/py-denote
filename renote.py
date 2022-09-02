@@ -10,7 +10,10 @@ notes_directory: Path = Path(os.path.join(Path.home(), "notes"))
 
 
 def get_or_create_dir(dir_path: Path):
-    """Get or creates a directory."""
+    """Get or creates a directory.
+
+    Will be replaced by config at some point.
+    """
     if dir_path.exists():
         return dir_path
     else:
