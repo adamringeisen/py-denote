@@ -30,7 +30,7 @@ class Note:
 
     def create_and_open_note(self, note_dir):
         """Create and open new note."""
-        path: pathlib.PosixPath = note_dir / self.fileId
+        path: pathlib.PurePath = note_dir / self.fileId
         with open(path, "w") as new_note_file:
             self.print_front_matter(self.format_type, new_note_file)
         click.launch(path.as_uri())
