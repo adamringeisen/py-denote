@@ -8,18 +8,20 @@ from note import Note
 default_notes_directory: Path = Path.home() / "notes"
 config_directory: Path = Path(click.get_app_dir("renote"))
 config_file: Path = config_directory / "config.ini"
+default_config = f'''
+[Options]
+# Possible format values: "mdYaml", "mdToml", "txt", "org"
+NoteFormat = mdYaml
+NoteDirectory = {default_notes_directory.as_posix()}
+'''
 
 
 def generate_default_config() -> configparser.ConfigParser:
     """Generate and return default configuration file."""
     config = configparser.ConfigParser()
-    config['Options'] = {
-        '# Availible Formats': 'mdYaml, mdToml, txt, org',
-        'NoteFormat': 'mdYaml',
-        'NoteDirectory': default_notes_directory.as_posix()
-    }
-    with open(config_file) as configfile:
-        config.write(configfile)
+    config_directory.mkdir(exist_ok=True)
+    with open(config_file, 'w+') as configfile:
+        configfile.write(default_config)
     config.read(config_file)
     return config
 
@@ -35,7 +37,7 @@ def get_config() -> configparser.ConfigParser:
 
 
 def get_or_create_dir(dir_path: Path) -> Path:
-    """Get or creates a directory."""
+    """Gets or creates a directory."""
     if dir_path.exists():
         return dir_path
     else:
